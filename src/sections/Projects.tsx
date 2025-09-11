@@ -4,8 +4,8 @@ import aiStartupLandingPage from "@/assets/images/ai-startup-landing-page.png";
 import Image from "next/image";
 import CheckIcon from "@/assets/icons/check-circle.svg";
 import ArrowUpRightIcon from "@/assets/icons/arrow-up-right.svg";
-import grainIamge from "@/assets/images/grain.jpg"
-
+import grainIamge from "@/assets/images/grain.jpg";
+import { SectionHeader } from "@/components/SectionHeader";
 
 const portfolioProjects = [
 	{
@@ -49,60 +49,63 @@ const portfolioProjects = [
 export const ProjectsSection = () => {
 	return (
 		<section className="pb-16">
-		  <div className="container">
-  			<div className="flex justify-center">
-  				<p className="uppercase font-semibold tracking-widest bg-gradient-to-r from-emerald-300 to-blue-400 text-transparent bg-clip-text text-center">
-  					Real-world Results
-  				</p>
-  			</div>
-  			<h2 className="font-serif text-3xl md:text-5xl text-center mt-6">
-  				Featured Projects
-  			</h2>
-  			<p className="mt-4 text-center text-white/60 md:text-lg max-w-md mx-auto">
-  				See how I transformed concepts into engagin digital experiences.
-  			</p>
-  			<div className="flex flex-col mt-10 md:mt-20 gap-20">
-  				{portfolioProjects.map((project, index) => (
-  					<div
-  						key={project.title ?? index}
-  						className="bg-gray-800 relative z-0 rounded-3xl overflow-hidden after:contents-[''] after:inset-0 after:absolute after:-z-10  after:outline after:-outline-offset-2 after:rounded-3xl after:outline-white/20 px-8 pt-8 md:pt-12 md:px-10"
-  					>
-              <div className="absolute inset-0 -z-10 opacity-5" style={{backgroundImage:`url(${grainIamge.src})`}}>
-
-              </div>
-  						<div className="bg-gradient-to-r from-emerald-300 to-blue-400 gap-2 text-transparent bg-clip-text inline-flex uppercase text-sm tracking-widest font-bold">
-  							<span>{project.company}</span>
-  							<span>&bull;</span>
-  							<span>{project.year}</span>
-  						</div>
-  						<h3 className="font-serif text-2xl mt-2 md:mt-5 md:text-4xl">{project.title}</h3>
-  						<hr className="text-white/50 border-t-2 mt-4" />
-  						<ul className="flex flex-col gap-4 mt-4">
-  							{project.results.map((result, index) => (
-  								<li
-  									key={index}
-  									className="flex items-center gap-2 md:text-base text-sm text-white"
-  								>
-  									<CheckIcon className="size-5 md:size-6" />
-  									<span>{result.title}</span>
-  								</li>
-  							))}
-  						</ul>
-  						<a href={project.link}>
-  							<button className="bg-white text-gray-950 h-12 w-full rounded-xl font-semibold inline-flex items-center justify-center gap-2 mt-8 md:w-fit px-8">
-  								<span>Visit Live Site</span>
-  								<ArrowUpRightIcon className="size-4" />
-  							</button>
-  						</a>
-  						<Image
-  							src={project.image}
-  							alt={project.title}
-  							className="mt-8 -mb-4"
-  						></Image>
-  					</div>
-  				))}
-  			</div>
-  		</div>
+			<div className="container">
+				<SectionHeader
+					eyebrow="Real-world Results"
+					title="Featured Projects"
+					description="See how I transformed concepts into engagin digital experiences."
+				/>
+				<div className="flex flex-col mt-10 md:mt-20 gap-20">
+					{portfolioProjects.map((project, index) => (
+						<div
+							key={project.title ?? index}
+							className="bg-gray-800 relative z-0 rounded-3xl overflow-hidden after:contents-[''] after:inset-0 after:absolute after:-z-10  after:outline after:-outline-offset-2 after:rounded-3xl after:outline-white/20 after:pointer-events-none px-8 pt-8 md:pt-12 md:px-10"
+						>
+							<div
+								className="absolute inset-0 -z-10 opacity-5"
+								style={{ backgroundImage: `url(${grainIamge.src})` }}
+							></div>
+							<div className="lg:grid lg:grid-cols-2 lg:gap-16">
+								<div className="lg:pb-16">
+									<div className="bg-gradient-to-r from-emerald-300 to-blue-400 gap-2 text-transparent bg-clip-text inline-flex uppercase text-sm tracking-widest font-bold">
+										<span>{project.company}</span>
+										<span>&bull;</span>
+										<span>{project.year}</span>
+									</div>
+									<h3 className="font-serif text-2xl mt-2 md:mt-5 md:text-4xl">
+										{project.title}
+									</h3>
+									<hr className="text-white/50 border-t-2 mt-4" />
+									<ul className="flex flex-col gap-4 mt-4">
+										{project.results.map((result, index) => (
+											<li
+												key={index}
+												className="flex items-center gap-2 md:text-base text-sm text-white"
+											>
+												<CheckIcon className="size-5 md:size-6" />
+												<span>{result.title}</span>
+											</li>
+										))}
+									</ul>
+									<a href={project.link}>
+										<button className="bg-white text-gray-950 h-12 w-full rounded-xl font-semibold inline-flex items-center justify-center gap-2 mt-8 md:w-fit px-8">
+											<span>Visit Live Site</span>
+											<ArrowUpRightIcon className="size-4" />
+										</button>
+									</a>
+								</div>
+								<div>
+									<Image
+										src={project.image}
+										alt={project.title}
+										className="mt-8 -mb-4 md:-mb-0 lg:absolute lg:h-full lg:w-auto lg:max-w-none"
+									></Image>
+								</div>
+							</div>
+						</div>
+					))}
+				</div>
+			</div>
 		</section>
 	);
 };
