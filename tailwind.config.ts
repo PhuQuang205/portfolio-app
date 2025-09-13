@@ -1,4 +1,3 @@
-import { transform } from "next/dist/build/swc";
 import type { Config } from "tailwindcss";
 
 const config: Config = {
@@ -28,7 +27,7 @@ const config: Config = {
 			},
 		},
 		animation: {
-			"ping-large": "ping-large 1s ease-in-out infinite"
+			"ping-large": "ping-large 1s ease-in-out infinite",
 		},
 		keyframes: {
 			"ping-large": {
