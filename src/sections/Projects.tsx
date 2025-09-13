@@ -58,7 +58,7 @@ export const ProjectsSection = () => {
 				<div className="flex flex-col mt-10 md:mt-20 gap-20">
 					{portfolioProjects.map((project, index) => (
 						<div
-							key={project.title ?? index}
+							key={index}
 							className="bg-gray-800 relative z-0 rounded-3xl overflow-hidden after:contents-[''] after:inset-0 after:absolute after:-z-10  after:outline after:-outline-offset-2 after:rounded-3xl after:outline-white/20 after:pointer-events-none px-8 pt-8 md:pt-12 md:px-10"
 						>
 							<div

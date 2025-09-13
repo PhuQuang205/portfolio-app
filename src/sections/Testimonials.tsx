@@ -6,6 +6,8 @@ import memojiAvatar5 from "@/assets/images/memoji-avatar-5.png";
 import { SectionHeader } from "@/components/SectionHeader";
 import Image from "next/image";
 import grainImage from "@/assets/images/grain.jpg";
+import { Card } from "@/components/Card";
+
 const testimonials = [
 	{
 		name: "Alex Turner",
@@ -41,26 +43,42 @@ const testimonials = [
 
 export const TestimonialsSection = () => {
 	return (
-		<div>
-			<SectionHeader
-				eyebrow="Happy Client"
-				title="What Clients Say About Me"
-				description="Don't just take my word for it. See what my client have to say my
-				work."
-			/>
-			<div className="flex-col lg:flex-row">
-				{testimonials.map((testimonial, index) => (
-					<div key={index} className="relative z-0 overflow-hidden bg-gray-800 p-6 rounded-3xl">
-            <div
-								className="absolute inset-0 -z-10 opacity-5"
-								style={{ backgroundImage: `url(${grainImage.src})` }}
-							></div>
-						<Image src={testimonial.avatar} alt={testimonial.name}></Image>
-						<div>{testimonial.name}</div>
-						<div>{testimonial.position}</div>
-						<p>{testimonial.text}</p>
+		<div className="py-16 lg:py-24">
+			<div className="container">
+				<SectionHeader
+					eyebrow="Happy Client"
+					title="What Clients Say About Me"
+					description="Don't just take my word for it. See what my client have to say my
+					work."
+				/>
+				<div className="mt-12 flex overflow-x-clip [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] lg:mt-24">
+					<div className="flex flex-none gap-8">
+						{testimonials.map((testimonial, index) => (
+							<Card key={index} className="max-w-xs md:max-w-md md:p-8">
+								<div
+									className="absolute inset-0 -z-10 opacity-5"
+									style={{ backgroundImage: `url(${grainImage.src})` }}
+								/>
+								<div className="flex items-center gap-4">
+									<div className="rounded-full size-14 bg-gray-700 inline-flex flex-shrink-0 items-center">
+										<Image
+											className="max-h-full rounded-full"
+											src={testimonial.avatar}
+											alt={testimonial.name}
+										/>
+									</div>
+									<div>
+										<div className="font-bold">{testimonial.name}</div>
+										<div className="text-sm text-white/40">
+											{testimonial.position}
+										</div>
+									</div>
+								</div>
+								<p className="text-sm mt-4 md:text-base md:mt-6">{testimonial.text}</p>
+							</Card>
+						))}
 					</div>
-				))}
+				</div>
 			</div>
 		</div>
 	);
